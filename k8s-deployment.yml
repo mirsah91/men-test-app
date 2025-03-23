@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mend-test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mend-test-app
+  template:
+    metadata:
+      labels:
+        app: mend-test-app
+    spec:
+      containers:
+        - name: mend-test-app
+          image: mihransahakyan9/mend-test-app:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mend-test-app-service
+spec:
+  selector:
+    app: mend-test-app
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
