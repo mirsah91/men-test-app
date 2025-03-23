@@ -22,8 +22,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t yourusername/mend-mvp-test-app:${{ github.sha }} .
-          docker push yourusername/mend-mvp-test-app:${{ github.sha }}
+          docker build -t mihransahakyan9/mend-mvp-test-app:${{ github.sha }} .
+          docker push mihransahakyan9/mend-mvp-test-app:${{ github.sha }}
 
   deploy:
     needs: build
@@ -44,4 +44,4 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f k8s-deployment.yml
-          kubectl set image deployment/mend-test-app mend-test-app=yourusername/mend-mvp-test-app:${{ github.sha }}
+          kubectl set image deployment/mend-test-app mend-test-app=mihransahakyan9/mend-mvp-test-app:${{ github.sha }}
