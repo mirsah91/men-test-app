@@ -40,7 +40,7 @@ jobs:
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --region us-east-1 --name mend-mvp-cluster
+          aws eks update-kubeconfig --region us-east-1 --name floral-rock-outfit
 
       - name: Deploy without validation
         run: |
